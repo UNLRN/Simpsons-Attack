@@ -1,0 +1,22 @@
+// *
+// 	border: 1px solid red
+
+#main
+	position: relative
+	margin-top: 150px
+	background-color: #fff
+	border-top: 5px solid #FBD900
+	border-bottom: 5px solid #FBD900
+	&:before, &:after
+		content: ''
+		top: 0
+		width: 5px
+		height: 100%
+		position: absolute
+		background: #FBD900
+		display: block
+	&:before
+		left: -5px
+	&:after
+		right: -5px
+

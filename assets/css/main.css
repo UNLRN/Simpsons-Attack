@@ -7161,63 +7161,142 @@ button.close {
     }
 }
 
-* {
-    border: 1px solid red;
-}
-
 html,body {
     width: 100%;
-    height: 100%;
+    height: auto;
 }
 
 #bg {
-    background: url("../images/bg.jpg");
-    background-size: contain;
-    width: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(to bottom, #25a9fb 0%, #8cf0ff 100%);
+    width: 100%;
     height: 100%;
+    z-index: -1;
+}
+
+#bg-top {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+#bg-bottom {
+    position: absolute;
+    left: 0;
+    bottom: 0;
 }
 
 #main {
-    margin-top: 180px;
+    position: relative;
+    margin-top: 150px;
     background-color: #fff;
-    border: 2px solid #ccc;
-    border-radius: 3px;
+    border-top: 5px solid #FBD900;
+    border-bottom: 5px solid #FBD900;
+}
+
+#main:before,#main:after {
+    content: '';
+    top: 0;
+    width: 5px;
+    height: 100%;
+    position: absolute;
+    background: #FBD900;
+    display: block;
+}
+
+#main:before {
+    left: -5px;
+}
+
+#main:after {
+    right: -5px;
 }
 
 #characters {
-    background-color: #aaa;
+    background: linear-gradient(to bottom, #25a9fb 0%, #8cf0ff 100%);
+    padding: 5px;
 }
 
-#stage {
-    background: url("../images/Stage-1-Downtown-Springfield.jpg");
-    background-size: cover;
-}
-
-#stage .no-bg {
-    background: none;
+#comp-char-select {
+    transform: scaleX(-1);
 }
 
 .character {
     display: inline-block;
     width: 15%;
     cursor: pointer;
-    border: 3px solid yellow;
+    background-color: #53D8FB;
+    border: 5px solid #FBD900;
     margin: 5px;
 }
 
 .character:hover {
-    border: 3px solid red;
+    border: 3px solid #F6511D;
+}
+
+.selected {
+    border: 3px solid #F6511D;
+}
+
+.btn-select {
+    display: none;
+    background-color: #FBD900;
+    color: #222;
+}
+
+.btn-select:hover {
+    background-color: #F6511D;
+    color: #eee;
+}
+
+#stage {
+    background: url("../images/Stage-1-Downtown-Springfield-small.jpg");
+    background-size: cover;
+    border-top: 5px solid #FBD900;
+}
+
+#stage .no-bg {
+    background: none;
+    display: inline-block;
 }
 
 #comp-char {
     transform: scaleX(-1);
 }
 
+#comp-char,#my-char {
+    width: 200px;
+    height: auto;
+}
+
+#vs-wrapper {
+    width: 100%;
+    height: auto;
+}
+
+#vs-wrapper #vs {
+    display: none;
+}
+
 .progress {
-    margin-top: 20px;
+    height: 50px;
+    margin-top: 10px;
+    background-color: #25A9FB;
+    border: 5px solid #FBD900;
+}
+
+.progress-bar {
+    background-color: #F6511D;
 }
 
 .health-container {
+    height: auto;
     width: 100%;
-    background-color: #fff;
+    background: none;
+}
+
+* {
+    font-family: 'Gloria Hallelujah', cursive;
 }
