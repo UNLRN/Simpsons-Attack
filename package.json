@@ -1,5 +1,5 @@
 {
-  "name": "gulp-example",
+  "name": "week-4-game",
   "version": "1.0.0",
   "description": "",
   "main": "index.html",
@@ -14,7 +14,6 @@
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
     "gulp-cssbeautify": "^0.1.3",
-    "gulp-sass": "^3.1.0",
-    "materialize-sass": "^0.98.2"
+    "gulp-sass": "^3.1.0"
   }
 }

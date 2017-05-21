@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="assets/css/main.css">
+	<script
+  		src="https://code.jquery.com/jquery-3.2.1.min.js"
+  		integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  		crossorigin="anonymous">
+  	</script>
+  	<script src="../node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js"></script>
+	<title>Simpsons Attack</title>
+</head>
+<body>
+	<div class="container-fluid" id="bg">
+		<div class="container" id="main">
+			<div class="row">
+				<div class="col-md-12" id="characters">
+					<div class="col-md-2"></div>
+					<div class="col-md-8 text-center" id="char-select">
+						<div class="character" id="bart"><img src="assets/images/thumb-bart.png" alt="" class="img-responsive"></div>
+						<div class="character" id="homer"><img src="assets/images/thumb-homer.png" alt="" class="img-responsive"></div>
+						<div class="character" id="lisa"><img src="assets/images/thumb-lisa.png" alt="" class="img-responsive"></div>
+						<div class="character" id="marge"><img src="assets/images/thumb-marge.png" alt="" class="img-responsive"></div>
+						<div class="character" id="milhouse"><img src="assets/images/thumb-milhouse.png" alt="" class="img-responsive"></div>
+						<div class="character" id="nelson"><img src="assets/images/thumb-nelson.png" alt="" class="img-responsive"></div>
+						<div class="character" id="sideshowbob"><img src="assets/images/thumb-sideshowbob.png" alt="" class="img-responsive"></div>
+						<div class="character" id="skinner"><img src="assets/images/thumb-skinner.png" alt="" class="img-responsive"></div>
+					</div>
+					<div class="col-md-2"></div>
+				</div>
+			</div>
+			<div class="container-fluid">
+				<div class="row" id="stage">
+					<div class="col-md-3 no-bg">
+						<div class="health-container">
+							<div class="progress">
+		    					<div class="progress-bar" id="my-health" style="width:20%">
+		      						<span class="sr-only">70% Complete</span>
+								</div>
+							</div>
+						</div>
+						<img src="assets/images/bart.png" alt="" class="img-responsive" id="my-char">
+						<div class="attack"></div>
+					</div>
+					<div class="col-md-6 no-bg"></div>
+					<div class="col-md-3 no-bg">
+						<div class="health-container">
+							<div class="progress">
+		    					<div class="progress-bar" id="comp-health" style="width:70%">
+		      						<span class="sr-only">70% Complete</span>
+								</div>
+							</div>
+						</div>
+						<img src="assets/images/marge.png" alt="" class="img-responsive" id="comp-char">
+						<div class="attack"></div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+
+	<script src="assets/js/game.js"></script>
+</body>
+</html>
