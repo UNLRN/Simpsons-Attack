@@ -4,13 +4,14 @@ let game, characters;
 
 $(document).ready(function() {
 
-	let myChar, compChar, myCharImg, compCharImg
+	let myChar, compChar, myCharImg, compCharImg;
 	let myCharSelect = false;
 	let compCharSelect = false;
 
 	game = {
 
 		myCharReset: function () {
+			characters[myChar].health = 100;
 			myChar = "";
 			myCharImg = "";
 			myCharSelect = false;
@@ -23,6 +24,7 @@ $(document).ready(function() {
 		},
 
 		compCharReset: function() {
+			characters[compChar].health = 100;
 			compChar = "";
 			compCharImg = "";
 			compCharSelect = false;
