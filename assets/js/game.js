@@ -54,6 +54,10 @@ $(document).ready(function() {
 			console.log("my attack");
 			characters[compChar].health -= (Math.floor(Math.random() * characters[myChar].attack) + 19);
 			$("#comp-health").css("width", characters[compChar].health + "%");
+			console.log("comp health = " + characters[compChar].health);
+			if (characters[compChar].health <= 0) {
+				$("#you-won").modal();
+			}
 		},
 
 		compAttack: function() {
@@ -61,53 +65,45 @@ $(document).ready(function() {
 				console.log("comp attack");
 				characters[myChar].health -= (Math.floor(Math.random() * characters[compChar].attack) + 1);
 				$("#my-health").css("width", characters[myChar].health + "%");
+				console.log("my health = " + characters[myChar].health);
+				if (characters[myChar].health <= 0) {
+					$("#you-lost").modal();
+				}
 			}, 1000);
 		},
 
-		checkMyHealth: function() {
-			setTimeout(function () {
-				console.log("my health = " + characters[myChar].health);
-				if (characters[myChar].health < 0) {
-					$("#you-lost").modal();
-				} else if (characters[compChar].health < 0) {
-					$(".progress-bar").css("width", "100%");
-					$("#you-won").modal();
-					this.compCharReset();
-					characters[myChar].health = 100;
-				}
-			}.bind(this), 1500);
-		},
+		// checkMyHealth: function() {
+		// 	setTimeout(function () {
+		// 		console.log("my health = " + characters[myChar].health);
+		// 		if (characters[myChar].health < 0) {
+		// 			$("#you-lost").modal();
+		// 		} else if (characters[compChar].health < 0) {
+		// 			$(".progress-bar").css("width", "100%");
+		// 			$("#you-won").modal();
+		// 			this.compCharReset();
+		// 			characters[myChar].health = 100;
+		// 		}
+		// 	}.bind(this), 1500);
+		// },
 
-		checkCompHealth: function() {
-			console.log("comp health = " + characters[compChar].health);
-			if (characters[myChar].health < 0) {
-				$(".progress-bar").css("width", "100%");
-				$("#you-lost").modal();
-			} else if (characters[compChar].health < 0) {
-				$(".progress-bar").css("width", "100%");
-				$("#you-won").modal();
-				this.compCharReset();
-				characters[myChar].health = 100;
-			}
-		},
-
-		pickCharacter: function() {
-			
-			
-		},
-
-		log: function() {
-			console.log("check");
-		},
+		// checkCompHealth: function() {
+		// 	console.log("comp health = " + characters[compChar].health);
+		// 	if (characters[myChar].health < 0) {
+		// 		$(".progress-bar").css("width", "100%");
+		// 		$("#you-lost").modal();
+		// 	} else if (characters[compChar].health < 0) {
+		// 		$(".progress-bar").css("width", "100%");
+		// 		$("#you-won").modal();
+		// 		this.compCharReset();
+		// 		characters[myChar].health = 100;
+		// 	}
+		// },
 
 		init: function() {
+			$("#my-char").unbind("click");
 			$("#my-char").on("click", function() {
 				this.myAttack();
-				this.checkCompHealth();
 				this.compAttack();
-				this.checkMyHealth();
-			}.bind(this));
-			$("#my-char").on("mouseup", function() {
 			}.bind(this));
 		}
 	};
@@ -211,10 +207,14 @@ $(document).ready(function() {
 		}
 	});
 
+	$("#instructions").modal();
+	$("#you-won").on("click", function () {
+		$(".progress-bar").css("width", "100%");
+		characters[myChar].health = 100;
+		game.compCharReset();
+	});
 	$("#play-again").on("click", function() { game.resetAll(); });
 
-	// game.resetAll();
-
-	$("#instructions").modal();
+	
 
 });
