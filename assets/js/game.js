@@ -4,7 +4,7 @@ let game, characters;
 let myChar, compChar, myCharImg, compCharImg;
 
 $(document).ready(function() {
-
+	$("#stage").hide();
 	// let myChar, compChar, myCharImg, compCharImg;
 	let myCharSelect = false;
 	let compCharSelect = false;
@@ -51,53 +51,24 @@ $(document).ready(function() {
 		},
 
 		myAttack: function() {
-			console.log("my attack");
-			characters[compChar].health -= (Math.floor(Math.random() * characters[myChar].attack) + 19);
+			characters[compChar].health -= (Math.floor(Math.random() * characters[myChar].attack) + 5);
 			$("#comp-health").css("width", characters[compChar].health + "%");
-			console.log("comp health = " + characters[compChar].health);
 			if (characters[compChar].health <= 0) {
 				$("#you-won").modal();
+				$("#stage").hide();
 			}
 		},
 
 		compAttack: function() {
 			setTimeout(function() {
-				console.log("comp attack");
 				characters[myChar].health -= (Math.floor(Math.random() * characters[compChar].attack) + 1);
 				$("#my-health").css("width", characters[myChar].health + "%");
-				console.log("my health = " + characters[myChar].health);
 				if (characters[myChar].health <= 0) {
 					$("#you-lost").modal();
+					$("#stage").hide();
 				}
 			}, 1000);
 		},
-
-		// checkMyHealth: function() {
-		// 	setTimeout(function () {
-		// 		console.log("my health = " + characters[myChar].health);
-		// 		if (characters[myChar].health < 0) {
-		// 			$("#you-lost").modal();
-		// 		} else if (characters[compChar].health < 0) {
-		// 			$(".progress-bar").css("width", "100%");
-		// 			$("#you-won").modal();
-		// 			this.compCharReset();
-		// 			characters[myChar].health = 100;
-		// 		}
-		// 	}.bind(this), 1500);
-		// },
-
-		// checkCompHealth: function() {
-		// 	console.log("comp health = " + characters[compChar].health);
-		// 	if (characters[myChar].health < 0) {
-		// 		$(".progress-bar").css("width", "100%");
-		// 		$("#you-lost").modal();
-		// 	} else if (characters[compChar].health < 0) {
-		// 		$(".progress-bar").css("width", "100%");
-		// 		$("#you-won").modal();
-		// 		this.compCharReset();
-		// 		characters[myChar].health = 100;
-		// 	}
-		// },
 
 		init: function() {
 			$("#my-char").unbind("click");
@@ -167,7 +138,6 @@ $(document).ready(function() {
 	};
 
 	$(".character").on("click", function() {
-		// $("#vs").css("display", "initial");
 		if (!myCharSelect) {
 			myChar = $(this).attr("id");
 			myCharImg = characters[myChar].image;
@@ -197,6 +167,7 @@ $(document).ready(function() {
 			$("#" + compChar).addClass("selected");
 			$("#vs").css("display", "initial");
 			$(this).attr("disabled", "true");
+			$("#stage").show();
 		}
 	});
 
