@@ -1,31 +1,91 @@
 // jshint esversion: 6
 
+let game, characters;
+
 $(document).ready(function() {
 
 	let myChar, compChar, myCharImg, compCharImg
 	let myCharSelect = false;
 	let compCharSelect = false;
 
-	const game = {
-		init: function() {
+	game = {
+
+		myCharReset: function () {
+			$(".character").removeClass("selected");
+			$("#my-btn").removeAttr("disabled");
+			$("#my-char").attr("src", "");
+			$("#my-char-select").attr("src", "assets/images/select-char.png");
+			$("#my-char-select").addClass("blink");
+			$("#my-btn").hide();
+		},
+
+		compCharReset: function() {
+			$("#comp-btn").removeAttr("disabled");
+			$("#comp-char").attr("src", "");
+			$("#comp-char-select").attr("src", "assets/images/select-char.png");
+			$("#comp-char-select").addClass("blink");
+			$("#comp-char-select").removeClass("reverse");
+			$("#comp-btn").hide();
+		},
+
+		resetAll: function() {
+			//reset characters health
 			$.each(characters, function (k, v) {
-				v.health = 100
+				v.health = 100;
 			});
 			$(".progress-bar").css("width", "100%");
+			//reset stage and character select btn
+			$("#stage").hide();
+
+			this.myCharReset();
+			this.compCharReset();
 		},
 
 		myAttack: function() {
-			characters[compChar].health -= characters[myChar].attack;
+			characters[compChar].health -= (Math.floor(Math.random() * characters[myChar].attack) + 100);
 			$("#comp-health").css("width", characters[compChar].health + "%");
 		},
-		
+
 		compAttack: function() {
-			characters[myChar].health -= characters[compChar].attack;
-			$("#my-health").css("width", characters[myChar].health + "%")
+			setTimeout(function() {
+				characters[myChar].health -= (Math.floor(Math.random() * characters[compChar].attack) + 1);
+				$("#my-health").css("width", characters[myChar].health + "%");
+			}, 1000);
+		},
+
+		checkHealth: function() {
+			setTimeout(function() {
+				if (characters[myChar].health < 0) {
+					$(".progress-bar").css("width", "100%");
+					$("#you-lost").modal();
+				} else if (characters[compChar].health < 0) {
+					$(".progress-bar").css("width", "100%");
+					this.pickCharacter();
+				}
+			}.bind(this), 1001);
+		},
+
+		pickCharacter: function() {
+			this.compCharReset();
+			$("#you-won").modal();
+		},
+
+		log: function() {
+			console.log("check");
+		},
+
+		init: function() {
+			$("#my-char").on("click", function() {
+				this.myAttack();
+				this.compAttack();
+			}.bind(this));
+			$("#my-char").on("mouseup", function() {
+				this.checkHealth();
+			}.bind(this));
 		}
 	};
 
-	const characters = {
+	characters = {
 		bart: {
 			image: "assets/images/bart.png",
 			health: 100,
@@ -89,12 +149,15 @@ $(document).ready(function() {
 			myChar = $(this).attr("id");
 			myCharImg = characters[myChar].image;
 			$("#my-char-select").attr("src", myCharImg);
-			$("#my-btn").css("display", "block");
-		} else {
+			$("#my-char-select").removeClass("blink");
+			$("#my-btn").show();
+		} else if (!($(this).hasClass("selected"))) {
 			compChar = $(this).attr("id");
 			compCharImg = characters[compChar].image;
 			$("#comp-char-select").attr("src", compCharImg);
-			$("#comp-btn").css("display", "block");
+			$("#comp-char-select").removeClass("blink");
+			$("#comp-char-select").addClass("reverse");
+			$("#comp-btn").show();
 		}
 	});
 
@@ -103,11 +166,14 @@ $(document).ready(function() {
 			myCharSelect = true;
 			$("#my-char").attr("src", myCharImg);
 			$("#" + myChar).addClass("selected");
+			$(this).attr("disabled", "true");
+			$("#stage").show();
 		} else {
 			compCharSelect = true;
 			$("#comp-char").attr("src", compCharImg);
 			$("#" + compChar).addClass("selected");
 			$("#vs").css("display", "initial");
+			$(this).attr("disabled", "true");
 		}
 	});
 
@@ -117,5 +183,9 @@ $(document).ready(function() {
 			game.init();
 		}
 	});
+
+	game.resetAll();
+
+	$("#play-again").on("click", function() { game.reset(); });
 
 });

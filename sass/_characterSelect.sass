@@ -1,8 +1,19 @@
+@keyframes blink
+	0%
+		opacity: 1
+	50%
+		opacity: 0
+	100%
+		opacity: 1
+
 #characters
 	background: linear-gradient(to bottom, rgba(37,169,251,1) 0%, rgba(140,240,255,1) 100%)
 	padding: 5px
 
-#comp-char-select
+.blink
+	animation: blink 1.75s linear infinite
+
+.reverse
 	transform: scaleX(-1)
 
 .character
@@ -22,6 +33,7 @@
 	display: none
 	background-color: #FBD900
 	color: #222
-	&:hover
+	&:hover, &:disabled
 		background-color: #F6511D
 		color: #eee
+	

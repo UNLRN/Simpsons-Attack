@@ -13,12 +13,18 @@
 	<title>Simpsons Attack</title>
 </head>
 <body>
+	<div class="container-fluid" id="bg">
+		<div class="wrapper">
+			<img src="assets/images/bg-top.png" alt="" id="bg-top" class="img-responsive">
+			<!-- <img src="assets/images/bg-bottom.png" alt="" id="bg-bottom" class="img-responsive"> -->
+		</div>
+	</div>
 	<div class="container" id="main">
 		<div class="row">
 			<div class="col-xs-12" id="characters">
 				<div class="row">
 					<div class="col-xs-2 text-center">
-						<img src="" alt="" class="img-responsive" id="my-char-select">
+						<img src="assets/images/select-char.png" alt="" class="img-responsive blink" id="my-char-select">
 						<button class="btn btn-block btn-select" id="my-btn">Select</button>
 					</div>
 					<div class="col-xs-8 text-center" id="char-select">
@@ -32,7 +38,7 @@
 						<div class="character" id="skinner"><img src="assets/images/thumb-skinner.png" alt="" class="img-responsive"></div>
 					</div>
 					<div class="col-xs-2 text-center">
-						<img src="" alt="" class="img-responsive" id="comp-char-select">
+						<img src="assets/images/select-char.png" alt="" class="img-responsive blink" id="comp-char-select">
 						<button class="btn btn-block btn-select" id="comp-btn">Select</button>
 					</div>
 				</div>
@@ -72,12 +78,39 @@
 			</div>
 		</div>
 	</div>
-	<div class="container-fluid" id="bg">
-		<div class="wrapper">
-			<img src="assets/images/bg-top.png" alt="" id="bg-top" class="img-responsive">
-			<!-- <img src="assets/images/bg-bottom.png" alt="" id="bg-bottom" class="img-responsive"> -->
-		</div>
+
+
+<!-- you lost modal -->
+	<div class="modal fade" id="you-lost" role="dialog">
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <div class="modal-body text-center">
+					<h1>You Lost!</h1>
+					<h3>Play again?</h3>
+	            </div>
+	            <div class="modal-footer">
+	                <button type="button" class="btn btn-success" data-dismiss="modal" id="play-again">yes</button>
+	                <button type="button" class="btn btn-danger" data-dismiss="modal" id="game-over">no</button>
+	            </div>
+	        </div>
+	    </div>
 	</div>
+
+<!-- choose another enemy -->
+	<div class="modal fade" id="you-won" role="dialog">
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <div class="modal-body text-center">
+					<h1>You Won!</h1>
+					<h3>Choose another enemy!</h3>
+	            </div>
+	            <div class="modal-footer">
+	                <button type="button" class="btn btn-success" data-dismiss="modal" id="play-again">Ok</button>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+
 
 	<script src="assets/js/game.js"></script>
 </body>

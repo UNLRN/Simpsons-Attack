@@ -7161,36 +7161,23 @@ button.close {
     }
 }
 
-html,body {
-    width: 100%;
-    height: auto;
+html {
+    height: 100%;
+    background: linear-gradient(to bottom, #25a9fb 0%, #8cf0ff 100%);
+}
+
+body {
+    min-height: 100%;
+    padding-bottom: 50px;
+    background: linear-gradient(to bottom, #25a9fb 0%, #8cf0ff 100%);
 }
 
 #bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: linear-gradient(to bottom, #25a9fb 0%, #8cf0ff 100%);
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-}
-
-#bg-top {
-    position: absolute;
-    left: 0;
-    top: 0;
-}
-
-#bg-bottom {
-    position: absolute;
-    left: 0;
-    bottom: 0;
+    padding: 0;
 }
 
 #main {
     position: relative;
-    margin-top: 150px;
     background-color: #fff;
     border-top: 5px solid #FBD900;
     border-bottom: 5px solid #FBD900;
@@ -7214,12 +7201,30 @@ html,body {
     right: -5px;
 }
 
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
 #characters {
     background: linear-gradient(to bottom, #25a9fb 0%, #8cf0ff 100%);
     padding: 5px;
 }
 
-#comp-char-select {
+.blink {
+    animation: blink 1.75s linear infinite;
+}
+
+.reverse {
     transform: scaleX(-1);
 }
 
@@ -7246,7 +7251,7 @@ html,body {
     color: #222;
 }
 
-.btn-select:hover {
+.btn-select:hover,.btn-select:disabled {
     background-color: #F6511D;
     color: #eee;
 }
@@ -7299,4 +7304,10 @@ html,body {
 
 * {
     font-family: 'Gloria Hallelujah', cursive;
+}
+
+#you-lost,#you-won {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 }
