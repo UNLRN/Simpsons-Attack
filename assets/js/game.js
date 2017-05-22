@@ -1,10 +1,11 @@
 // jshint esversion: 6
 
 let game, characters;
+let myChar, compChar, myCharImg, compCharImg;
 
 $(document).ready(function() {
 
-	let myChar, compChar, myCharImg, compCharImg;
+	// let myChar, compChar, myCharImg, compCharImg;
 	let myCharSelect = false;
 	let compCharSelect = false;
 
@@ -50,7 +51,7 @@ $(document).ready(function() {
 		},
 
 		myAttack: function() {
-			characters[compChar].health -= (Math.floor(Math.random() * characters[myChar].attack) + 1);
+			characters[compChar].health -= (Math.floor(Math.random() * characters[myChar].attack) + 19);
 			$("#comp-health").css("width", characters[compChar].health + "%");
 		},
 
@@ -68,14 +69,16 @@ $(document).ready(function() {
 					$("#you-lost").modal();
 				} else if (characters[compChar].health < 0) {
 					$(".progress-bar").css("width", "100%");
-					this.pickCharacter();
+					$("#you-won").modal();
+					this.compCharReset();
+					characters[myChar].health = 100;
 				}
-			}.bind(this), 1001);
+			}.bind(this), 1500);
 		},
 
 		pickCharacter: function() {
-			this.compCharReset();
-			$("#you-won").modal();
+			
+			
 		},
 
 		log: function() {
@@ -194,7 +197,7 @@ $(document).ready(function() {
 
 	$("#play-again").on("click", function() { game.resetAll(); });
 
-	game.resetAll();
+	// game.resetAll();
 
 	$("#instructions").modal();
 
