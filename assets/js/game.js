@@ -51,21 +51,23 @@ $(document).ready(function() {
 		},
 
 		myAttack: function() {
-			characters[compChar].health -= (Math.floor(Math.random() * characters[myChar].attack) + 1);
+			console.log("my attack");
+			characters[compChar].health -= (Math.floor(Math.random() * characters[myChar].attack) + 19);
 			$("#comp-health").css("width", characters[compChar].health + "%");
 		},
 
 		compAttack: function() {
 			setTimeout(function() {
+				console.log("comp attack");
 				characters[myChar].health -= (Math.floor(Math.random() * characters[compChar].attack) + 1);
 				$("#my-health").css("width", characters[myChar].health + "%");
 			}, 1000);
 		},
 
-		checkHealth: function() {
-			setTimeout(function() {
+		checkMyHealth: function() {
+			setTimeout(function () {
+				console.log("my health = " + characters[myChar].health);
 				if (characters[myChar].health < 0) {
-					$(".progress-bar").css("width", "100%");
 					$("#you-lost").modal();
 				} else if (characters[compChar].health < 0) {
 					$(".progress-bar").css("width", "100%");
@@ -74,6 +76,19 @@ $(document).ready(function() {
 					characters[myChar].health = 100;
 				}
 			}.bind(this), 1500);
+		},
+
+		checkCompHealth: function() {
+			console.log("comp health = " + characters[compChar].health);
+			if (characters[myChar].health < 0) {
+				$(".progress-bar").css("width", "100%");
+				$("#you-lost").modal();
+			} else if (characters[compChar].health < 0) {
+				$(".progress-bar").css("width", "100%");
+				$("#you-won").modal();
+				this.compCharReset();
+				characters[myChar].health = 100;
+			}
 		},
 
 		pickCharacter: function() {
@@ -88,10 +103,11 @@ $(document).ready(function() {
 		init: function() {
 			$("#my-char").on("click", function() {
 				this.myAttack();
+				this.checkCompHealth();
 				this.compAttack();
+				this.checkMyHealth();
 			}.bind(this));
 			$("#my-char").on("mouseup", function() {
-				this.checkHealth();
 			}.bind(this));
 		}
 	};
