@@ -11,6 +11,9 @@ $(document).ready(function() {
 	game = {
 
 		myCharReset: function () {
+			myChar = "";
+			myCharImg = "";
+			myCharSelect = false;
 			$(".character").removeClass("selected");
 			$("#my-btn").removeAttr("disabled");
 			$("#my-char").attr("src", "");
@@ -20,6 +23,9 @@ $(document).ready(function() {
 		},
 
 		compCharReset: function() {
+			compChar = "";
+			compCharImg = "";
+			compCharSelect = false;
 			$("#comp-btn").removeAttr("disabled");
 			$("#comp-char").attr("src", "");
 			$("#comp-char-select").attr("src", "assets/images/select-char.png");
