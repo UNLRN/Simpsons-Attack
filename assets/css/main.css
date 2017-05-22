@@ -7179,8 +7179,8 @@ body {
 #main {
     position: relative;
     background-color: #fff;
-    border-top: 5px solid #FBD900;
-    border-bottom: 5px solid #FBD900;
+    border-top: 5px solid #fbd900;
+    border-bottom: 5px solid #fbd900;
 }
 
 #main:before,#main:after {
@@ -7189,7 +7189,7 @@ body {
     width: 5px;
     height: 100%;
     position: absolute;
-    background: #FBD900;
+    background: #fbd900;
     display: block;
 }
 
@@ -7232,34 +7232,34 @@ body {
     display: inline-block;
     width: 15%;
     cursor: pointer;
-    background-color: #53D8FB;
-    border: 5px solid #FBD900;
+    background-color: #53d8fb;
+    border: 5px solid #fbd900;
     margin: 5px;
 }
 
 .character:hover {
-    border: 3px solid #F6511D;
+    border: 3px solid #f6511d;
 }
 
 .selected {
-    border: 3px solid #F6511D;
+    border: 3px solid #f6511d;
 }
 
 .btn-select {
     display: none;
-    background-color: #FBD900;
+    background-color: #fbd900;
     color: #222;
 }
 
 .btn-select:hover,.btn-select:disabled {
-    background-color: #F6511D;
+    background-color: #f6511d;
     color: #eee;
 }
 
 #stage {
     background: url("../images/Stage-1-Downtown-Springfield-small.jpg");
     background-size: cover;
-    border-top: 5px solid #FBD900;
+    border-top: 5px solid #fbd900;
 }
 
 #stage .no-bg {
@@ -7288,12 +7288,12 @@ body {
 .progress {
     height: 50px;
     margin-top: 10px;
-    background-color: #25A9FB;
-    border: 5px solid #FBD900;
+    background-color: #25a9fb;
+    border: 5px solid #fbd900;
 }
 
 .progress-bar {
-    background-color: #F6511D;
+    background-color: #f6511d;
 }
 
 .health-container {
@@ -7304,10 +7304,4 @@ body {
 
 * {
     font-family: 'Gloria Hallelujah', cursive;
-}
-
-#you-lost,#you-won {
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
 }

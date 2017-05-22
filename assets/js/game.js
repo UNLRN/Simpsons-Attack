@@ -184,8 +184,10 @@ $(document).ready(function() {
 		}
 	});
 
+	$("#play-again").on("click", function() { game.resetAll(); });
+
 	game.resetAll();
 
-	$("#play-again").on("click", function() { game.reset(); });
+	$("#instructions").modal();
 
 });
