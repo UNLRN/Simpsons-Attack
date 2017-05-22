@@ -51,7 +51,7 @@ $(document).ready(function() {
 		},
 
 		myAttack: function() {
-			characters[compChar].health -= (Math.floor(Math.random() * characters[myChar].attack) + 19);
+			characters[compChar].health -= (Math.floor(Math.random() * characters[myChar].attack) + 1);
 			$("#comp-health").css("width", characters[compChar].health + "%");
 		},
 
