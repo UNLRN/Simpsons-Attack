@@ -112,7 +112,7 @@ $(document).ready(function() {
 
 		marge: {
 			image: "assets/images/marge.png",
-			audio: "assets/audio/marge.mp3",
+			audio: "assets/audio/marge.wav",
 			health: 100,
 			attack: 20,
 			counter: 5
@@ -120,7 +120,7 @@ $(document).ready(function() {
 
 		milhouse: {
 			image: "assets/images/milhouse.png",
-			audio: "assets/images/milhouse.m4a",
+			audio: "assets/images/milhouse.wav",
 			health: 100,
 			attack: 20,
 			counter: 5
@@ -136,7 +136,7 @@ $(document).ready(function() {
 
 		sideshowbob: {
 			image: "assets/images/sideshowbob.png",
-			audio: "assets/audio/sideshowbob.mp3",
+			audio: "assets/audio/sideshowbob.wav",
 			health: 100,
 			attack: 20,
 			counter: 5
