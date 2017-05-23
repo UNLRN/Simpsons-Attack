@@ -1,14 +1,16 @@
 // jshint esversion: 6
 
-let game, characters;
+let game, characters, baseUrl;
 let myChar, compChar, myCharImg, compCharImg;
 
 $(document).ready(function() {
-	$("#stage").hide();
+	
+	baseUrl = window.location.href;
 	// let myChar, compChar, myCharImg, compCharImg;
 	let myCharSelect = false;
 	let compCharSelect = false;
-
+	$("#stage").hide();
+	
 	game = {
 
 		myCharReset: function () {
@@ -86,6 +88,7 @@ $(document).ready(function() {
 	characters = {
 		bart: {
 			image: "assets/images/bart.png",
+			audio: "assets/audio/bart.wav",
 			health: 100,
 			attack: 20,
 			counter: 5
@@ -93,6 +96,7 @@ $(document).ready(function() {
 
 		homer: {
 			image: "assets/images/homer.png",
+			audio: "assets/audio/homer.wav",
 			health: 100,
 			attack: 20,
 			counter: 5
@@ -100,6 +104,7 @@ $(document).ready(function() {
 
 		lisa: {
 			image: "assets/images/lisa.png",
+			audio: "assets/audio/lisa.wav",
 			health: 100,
 			attack: 20,
 			counter: 5
@@ -107,6 +112,7 @@ $(document).ready(function() {
 
 		marge: {
 			image: "assets/images/marge.png",
+			audio: "assets/audio/marge.mp3",
 			health: 100,
 			attack: 20,
 			counter: 5
@@ -114,6 +120,7 @@ $(document).ready(function() {
 
 		milhouse: {
 			image: "assets/images/milhouse.png",
+			audio: "assets/images/milhouse.m4a",
 			health: 100,
 			attack: 20,
 			counter: 5
@@ -121,6 +128,7 @@ $(document).ready(function() {
 
 		nelson: {
 			image: "assets/images/nelson.png",
+			audio: "assets/images/nelson.wav",
 			health: 100,
 			attack: 20,
 			counter: 5
@@ -128,6 +136,7 @@ $(document).ready(function() {
 
 		sideshowbob: {
 			image: "assets/images/sideshowbob.png",
+			audio: "assets/audio/sideshowbob.mp3",
 			health: 100,
 			attack: 20,
 			counter: 5
@@ -135,6 +144,7 @@ $(document).ready(function() {
 
 		skinner: {
 			image: "assets/images/skinner.png",
+			audio: "assets/audio/skinner.wav",
 			health: 100,
 			attack: 20,
 			counter: 5
@@ -142,6 +152,7 @@ $(document).ready(function() {
 	};
 
 	$(".character").on("click", function() {
+		new Audio(baseUrl + characters[$(this).attr("id")].audio).play();
 		if (!myCharSelect) {
 			myChar = $(this).attr("id");
 			myCharImg = characters[myChar].image;
