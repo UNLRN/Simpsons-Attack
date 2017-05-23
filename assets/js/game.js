@@ -120,7 +120,7 @@ $(document).ready(function() {
 
 		milhouse: {
 			image: "assets/images/milhouse.png",
-			audio: "assets/images/milhouse.wav",
+			audio: "assets/audio/milhouse.wav",
 			health: 100,
 			attack: 20,
 			counter: 5
@@ -128,7 +128,7 @@ $(document).ready(function() {
 
 		nelson: {
 			image: "assets/images/nelson.png",
-			audio: "assets/images/nelson.wav",
+			audio: "assets/audio/nelson.wav",
 			health: 100,
 			attack: 20,
 			counter: 5
