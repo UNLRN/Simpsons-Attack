@@ -51,7 +51,7 @@ $(document).ready(function() {
 		},
 
 		myAttack: function() {
-			characters[compChar].health -= (Math.floor(Math.random() * characters[myChar].attack) + 5);
+			characters[compChar].health -= (Math.floor(Math.random() * characters[myChar].attack) + 3);
 			$("#comp-health").css("width", characters[compChar].health + "%");
 			if (characters[compChar].health <= 0) {
 				$("#you-won").modal();
