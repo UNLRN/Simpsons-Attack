@@ -73,8 +73,12 @@ $(document).ready(function() {
 		init: function() {
 			$("#my-char").unbind("click");
 			$("#my-char").on("click", function() {
-				this.myAttack();
-				this.compAttack();
+				if ((characters[compChar].health >= 1) && (characters[myChar].health >= 0)) {
+					this.myAttack();
+				}
+				if ((characters[myChar].health >= 1) && (characters[compChar].health >= 0)) {
+					this.compAttack();
+				}
 			}.bind(this));
 		}
 	};
@@ -185,6 +189,9 @@ $(document).ready(function() {
 		game.compCharReset();
 	});
 	$("#play-again").on("click", function() { game.resetAll(); });
+	$("#game-over").on("click", function() {
+		window.location.href += "game-over.html";
+	});
 
 	
 
