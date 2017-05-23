@@ -73,10 +73,10 @@ $(document).ready(function() {
 		init: function() {
 			$("#my-char").unbind("click");
 			$("#my-char").on("click", function() {
-				if ((characters[compChar].health >= 1) && (characters[myChar].health >= 0)) {
+				if ((characters[compChar].health >= 1) && (characters[myChar].health >= 1)) {
 					this.myAttack();
 				}
-				if ((characters[myChar].health >= 1) && (characters[compChar].health >= 0)) {
+				if ((characters[myChar].health >= 1) && (characters[compChar].health >= 1)) {
 					this.compAttack();
 				}
 			}.bind(this));
